@@ -1,0 +1,16 @@
+[
+    {
+    "productName" : "adidas original",
+    "email" : "mytest@gmail.com",
+    "password" : "Practice@1",
+    "countryCode" : "sw",
+    "country" : " Switzerland"
+},
+{
+    "productName" : "zara coat 3",
+    "email" : "mytest@gmail.com",
+    "password" : "Practice@1",
+    "countryCode" : "ind",
+    "country" : " India"
+}
+]

@@ -1,0 +1,20 @@
+{
+  "name": "qa-playwright-automation-udemy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "regression": "npx playwright test --project=chromium",
+    "webtest": "npx playwright test --grep @web",
+    "APItest": "npx playwright test --grep @API",
+    "Iphonecustomconfig": "npx playwright test --config=playwright.config1.js --project=IOS",
+    "Androidcustomconfig": "npx playwright test --config=playwright.config1.js --project=Android"
+  
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.26.1"
+  }
+}
