@@ -15,14 +15,11 @@ class DashboardPage{
     async searchProducts(productName)
     {
         await this.delay(3000)
-        console.log(await this.productText.allTextContents()) 
         const count = await this.products.count()
-        console.log("Count : " ,count)
         for (let i=0;i<count;i++)
         {
         if(await this.products.nth(i).locator('b').textContent() === productName)
         {
-        console.log(await this.products.nth(i).locator('b').textContent())
             await this.products.nth(i).locator("text=' Add To Cart'").click()
             break
         }

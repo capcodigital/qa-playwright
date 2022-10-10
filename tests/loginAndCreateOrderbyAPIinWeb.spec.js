@@ -20,9 +20,6 @@ response= await apiutils.createOrder(orderPayload)
 
 test("@API @web Login and Create order by API call", async({page}) => {
     
-    // const productName = "adidas original"
-    // const email = "mytest@gmail.com"
-    // const products = page.locator(".card-body")
     page.addInitScript(value => {
         window.localStorage.setItem("token",value)
     }    , response.token
@@ -34,13 +31,11 @@ await page.locator(".btn-custom[routerlink='/dashboard/myorders']").click()
 
 await page.locator("tbody").waitFor()
 const rows= await page.locator("tbody tr").count()
-console.log("Rows: ",rows)
 for(let i=0;i<rows;i++)
 {
    const currentOderId=await page.locator("tbody tr").nth(i).locator("th").textContent()
    if(response.orderId.includes(currentOderId))
    {
-       console.log("Hi")
        await page.locator("td .btn-primary").nth(i).click()
        break
    }

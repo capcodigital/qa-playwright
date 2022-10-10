@@ -12,15 +12,11 @@ class OrderHistory{
     {
         await this.table.waitFor()
         const rows= await this.row.count()
-        console.log("Rows: ",rows)
         for(let i=0;i<rows;i++)
         {
            const currentOderId=await this.row.nth(i).locator("th").textContent()
-           //console.log(currentOderId,finalOrder)
-           //if(currentOderId === finalOrder)
            if(OrderId.includes(currentOderId))
            {
-               console.log("Hi")
                await this.primary.nth(i).click()
                break
            }

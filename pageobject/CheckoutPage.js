@@ -34,16 +34,11 @@ async validateProductname(productName)
     await this.delay(2000)
     await this.dropdown.waitFor()
     const optionsCount = await this.dropdown.locator("button").count()
-    console.log("Options count : " ,optionsCount)
     for(let i=0;i<optionsCount;i++)
     {
         const optionText = await this.dropdown.locator("button").nth(i).textContent()
-        console.log(optionText)
         if(optionText === country)
         {
-        console.log("--------------")
-        console.log(optionText)
-        console.log("--------------")
             await this.dropdown.locator("[type='button']").nth(i).click()
             break
         }

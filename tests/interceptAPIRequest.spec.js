@@ -1,8 +1,9 @@
 const {test , request, expect}= require('@playwright/test')
 const {APiUtils} = require('../utils/APiUtils')
-const userDetailsPayload= {userEmail: "mytest@gmail.com", userPassword: "Practice@1"}
+const userDetailsPayload= {userEmail: "mocking@gmail.com", userPassword: "Practice@1"}
 let token
 //test.describe.configure({mode:'serial'})
+
 test.beforeAll(async()=>
 {
 const APIcontext= await request.newContext()
@@ -19,7 +20,7 @@ test("@API Mock API request ", async({page}) => {
     await page.goto("https://rahulshettyacademy.com/client/")
     await page.setViewportSize({width: 1520, height: 800})
     await page.locator(".btn-custom[routerlink='/dashboard/myorders']").click()
-    await page.route('https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=63401e1dc4d0c51f4f37c613',
+    await page.route('https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=63444793c4d0c51f4f3a62ab',
     route=>route.continue({url:'https://rahulshettyacademy.com/client/dashboard/order-details/630f7a77c4d0c51f4f136cab'})
     )
     await page.locator("button:has-text('View')").first().click()

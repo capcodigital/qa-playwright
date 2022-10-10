@@ -12,7 +12,6 @@ class APiUtils
         })
         const loginresponseJson = await loginResponse.json()
         const token=loginresponseJson.token
-        console.log("Token : " ,token)
         return token
     }
 
@@ -31,9 +30,7 @@ class APiUtils
 
 })
 const orderResponseJson=await orderResponse.json()
-console.log(orderResponseJson)
 const orderId=orderResponseJson.orders[0];
-console.log("Order id :",orderId)
 response.orderId=orderId
 return response
     }

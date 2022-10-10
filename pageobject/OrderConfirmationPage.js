@@ -11,10 +11,8 @@ class OrderConfirmationPage{
     async orderConfirmation(){
         await expect(this.header).toHaveText(" Thankyou for the order. ")
         const orderId = await this.orderId.textContent()
-        console.log(await this.orderId)
         // right= orderId.split("| ")[1]
         // finalOrder= right.split(" |")[0]
-        // console.log(finalOrder)
         await this.myorders.click()
         return orderId
     }

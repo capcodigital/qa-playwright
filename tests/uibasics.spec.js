@@ -15,11 +15,9 @@ test("@web Valid and Invalid Login", async({browser})=> {
     const passWord = page.locator("#password")
     const signIn = page.locator("[type='submit']")
     await page.goto("https://www.rahulshettyacademy.com/loginpagePractise/")
-    console.log(await page.title())
     await userName.type("FakeUsername")
     await passWord.type("learning")
     await signIn.click()
-    console.log(await page.locator("[style*='block']").textContent())
     await expect(page.locator("[style*='block']")).toContainText("Incorrect")
     await userName.fill("")
     await userName.fill("rahulshettyacademy")
@@ -32,9 +30,6 @@ test("@web Valid and Invalid Login", async({browser})=> {
         ]
     )
     const titles= await page.locator(".card-title a").allTextContents()
-    console.log(titles)
-    //console.log(await page.locator(".card-title a").first().textContent())
-    //console.log(await page.locator(".card-title a").nth(3).textContent())
     await expect(page).toHaveTitle("ProtoCommerce")
 })
 
@@ -48,7 +43,6 @@ test("@web page fixture test and Radio button, Dropdown , Checkbox , Blink class
     await page.locator("#terms").check()
     expect(await page.locator("#terms").isChecked()).toBeTruthy()
     await expect(page.locator("[href*='documents-request']")).toHaveAttribute("class","blinkingText")
-    //await page.pause()
 })
 
 test("@web wait for all Service/API call to complete ", async({page}) => {
@@ -65,14 +59,11 @@ await page.waitForLoadState('networkidle')
 //https://playwright.dev/docs/actionability
 //allTextContents() do not have auto wait option
 await delay(3000)
-console.log(await page.locator(".card-body b").allTextContents())
 const count = await products.count()
-console.log("Count : " ,count)
 for (let i=0;i<count;i++)
 {
   if(await products.nth(i).locator('b').textContent() === productName)
 {
-    console.log(await products.nth(i).locator('b').textContent())
     await products.nth(i).locator("text=' Add To Cart'").click()
     break
 }
@@ -87,16 +78,11 @@ await delay(2000)
 const dropdown = page.locator(".ta-results")
 await dropdown.waitFor()
 const optionsCount = await dropdown.locator("button").count()
-console.log("Options count : " ,optionsCount)
 for(let i=0;i<optionsCount;i++)
 {
     const optionText = await dropdown.locator("button").nth(i).textContent()
-    console.log(optionText)
     if(optionText === " Switzerland")
     {
-    console.log("--------------")
-    console.log(optionText)
-    console.log("--------------")
         await dropdown.locator("[type='button']").nth(i).click()
         break
     }
@@ -105,23 +91,15 @@ await expect(page.locator(".user__name")).toContainText(email)
 await page.locator(".action__submit").click()
 await expect(page.locator(".hero-primary")).toHaveText(" Thankyou for the order. ")
 const orderId = await page.locator(".em-spacer-1 .ng-star-inserted").textContent()
-console.log(orderId)
-// right= orderId.split("| ")[1]
-// finalOrder= right.split(" |")[0]
-// console.log(finalOrder)
 await page.locator(".btn-custom[routerlink='/dashboard/myorders']").click()
 //await delay(2000)
 await page.locator("tbody").waitFor()
 const rows= await page.locator("tbody tr").count()
-console.log("Rows: ",rows)
 for(let i=0;i<rows;i++)
 {
    const currentOderId=await page.locator("tbody tr").nth(i).locator("th").textContent()
-   //console.log(currentOderId,finalOrder)
-   //if(currentOderId === finalOrder)
    if(orderId.includes(currentOderId))
    {
-       console.log("Hi")
        await page.locator("td .btn-primary").nth(i).click()
        break
    }
@@ -147,7 +125,6 @@ test("@web Child tabs", async({browser}) => {
     const right=copyrightText.split("Reserved ")[1]
     let userName=right.split(" ©")[0]
     await page.locator("#username").type(userName)
-    console.log(await page.locator("#username").textContent())
 })
 
 test("@web Hide , Visible , Goback , Go forward , Dialog , Frames" ,async({page})=>
