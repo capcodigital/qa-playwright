@@ -39,6 +39,7 @@ for (let i=0;i<count;i++)
     break
 }
 }
+await delay(2000)
 await page.locator("[routerlink*='cart']").click()
 await page.locator("div ul").first().waitFor()
 const booleanResult=await page.locator("h3:has-text('adidas original')").isVisible()
