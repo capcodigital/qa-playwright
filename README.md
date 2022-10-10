@@ -6,8 +6,8 @@ To learn playwright in depth , refer [https://playwright.dev/docs/intro]
 
 This project contains 
 
-* Basics of playwright (uibasics.spec.js) 
-* Page objects (uibasics_page_object.spec.js)
+*   Basics of playwright (uibasics.spec.js) 
+*   Page objects (uibasics_page_object.spec.js)
 *	Mock API request (interceptAPIRequest.spec.js)
 *	Mock API response (interceptAPIResponse.spec.js)
 *	Abort API calls (AbortAPIcallsAndLogs.spec.js)
