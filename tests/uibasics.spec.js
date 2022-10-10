@@ -104,6 +104,7 @@ for(let i=0;i<rows;i++)
        break
    }
 }
+await delay(2000)
 const orderdetail= await page.locator(".col-text").textContent()
 expect(orderId.includes(orderdetail)).toBeTruthy()
 }) 
